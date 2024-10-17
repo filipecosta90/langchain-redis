@@ -965,7 +965,7 @@ class RedisVectorStore(VectorStore):
                 doc_embeddings_dict = {
                     doc_id: doc[self.config.embedding_field]
                     if self.config.storage_type == StorageType.JSON.value
-                    else buffer_to_array(doc[self.config.embedding_field])
+                    else buffer_to_array(doc[self.config.embedding_field],dtype=np.float32)
                     for doc_id, doc in zip(doc_ids, docs_from_storage)
                 }
 
